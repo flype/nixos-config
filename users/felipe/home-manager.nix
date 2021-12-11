@@ -110,6 +110,10 @@ let sources = import ../../nix/sources.nix; in {
     enable = true;
     userName = "Felipe Talavera";
     userEmail = "felipe.talavera@gmail.com";
+    signin = {
+      key = "980EDCE94D8150E8";
+      signByDefault= true;
+    };
     aliases = {
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
       root = "rev-parse --show-toplevel";
