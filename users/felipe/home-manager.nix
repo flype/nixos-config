@@ -110,7 +110,7 @@ let sources = import ../../nix/sources.nix; in {
     enable = true;
     userName = "Felipe Talavera";
     userEmail = "felipe.talavera@gmail.com";
-    signin = {
+    signing = {
       key = "980EDCE94D8150E8";
       signByDefault= true;
     };
