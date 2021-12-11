@@ -23,6 +23,7 @@ let sources = import ../../nix/sources.nix; in {
     pkgs.zathura
     pkgs._1password
     pkgs.vscode
+    pkgs.ripgrep
   ];
 
   #---------------------------------------------------------------------
@@ -192,6 +193,8 @@ let sources = import ../../nix/sources.nix; in {
 
   programs.neovim = {
     enable = true;
+    vimAlias = true;
+
     package = pkgs.neovim-nightly;
 
     plugins = with pkgs; [
