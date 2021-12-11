@@ -3,11 +3,6 @@ self: super:
 let sources = import ../../nix/sources.nix; in rec {
   # My vim config
   customVim = with self; {
-    vim-cue = vimUtils.buildVimPlugin {
-      name = "vim-cue";
-      src = sources.vim-cue;
-    };
-
     vim-fish = vimUtils.buildVimPlugin {
       name = "vim-fish";
       src = sources.vim-fish;
@@ -21,16 +16,6 @@ let sources = import ../../nix/sources.nix; in rec {
     vim-misc = vimUtils.buildVimPlugin {
       name = "vim-misc";
       src = sources.vim-misc;
-    };
-
-    vim-pgsql = vimUtils.buildVimPlugin {
-      name = "vim-pgsql";
-      src = sources.vim-pgsql;
-    };
-
-    vim-tla = vimUtils.buildVimPlugin {
-      name = "tla.vim";
-      src = sources.vim-tla;
     };
 
     vim-zig = vimUtils.buildVimPlugin {
@@ -91,19 +76,5 @@ let sources = import ../../nix/sources.nix; in rec {
       name = "nvim-treesitter-textobjects";
       src = sources.nvim-treesitter-textobjects;
     };
-  };
-
-  tree-sitter-proto = self.callPackage
-    (sources.nixpkgs + /pkgs/development/tools/parsing/tree-sitter/grammar.nix) { } {
-    language = "proto";
-    version  = "0.1.0";
-    source   = sources.tree-sitter-proto;
-  };
-
-  tree-sitter-hcl = self.callPackage
-    (sources.nixpkgs + /pkgs/development/tools/parsing/tree-sitter/grammar.nix) { } {
-    language = "hcl";
-    version  = "0.1.0";
-    source   = sources.tree-sitter-hcl;
   };
 }

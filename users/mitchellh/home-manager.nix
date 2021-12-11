@@ -18,8 +18,6 @@ let sources = import ../../nix/sources.nix; in {
     pkgs.htop
     pkgs.jq
     pkgs.rofi
-    pkgs.go
-    pkgs.gopls
     pkgs.tree
     pkgs.watch
     pkgs.zathura
@@ -43,15 +41,6 @@ let sources = import ../../nix/sources.nix; in {
 
   xdg.configFile."i3/config".text = builtins.readFile ./i3;
   xdg.configFile."rofi/config.rasi".text = builtins.readFile ./rofi;
-
-  # tree-sitter parsers
-  xdg.configFile."nvim/parser/proto.so".source = "${pkgs.tree-sitter-proto}/parser";
-  xdg.configFile."nvim/queries/proto/folds.scm".source =
-    "${sources.tree-sitter-proto}/queries/folds.scm";
-  xdg.configFile."nvim/queries/proto/highlights.scm".source =
-    "${sources.tree-sitter-proto}/queries/highlights.scm";
-  xdg.configFile."nvim/queries/proto/textobjects.scm".source =
-    ./textobjects.scm;
 
   #---------------------------------------------------------------------
   # Programs
@@ -78,20 +67,6 @@ let sources = import ../../nix/sources.nix; in {
     };
   };
 
-  programs.direnv= {
-    enable = true;
-
-    config = {
-      whitelist = {
-        prefix= [
-          "$HOME/code/go/src/github.com/hashicorp"
-          "$HOME/code/go/src/github.com/mitchellh"
-        ];
-
-        exact = ["$HOME/.envrc"];
-      };
-    };
-  };
 
   programs.fish = {
     enable = true;
@@ -149,11 +124,6 @@ let sources = import ../../nix/sources.nix; in {
     };
   };
 
-  programs.go = {
-    enable = true;
-    goPath = "code/go";
-    goPrivate = [ "github.com/mitchellh" "github.com/hashicorp" "rfc822.mx" ];
-  };
 
   programs.tmux = {
     enable = true;
@@ -219,12 +189,9 @@ let sources = import ../../nix/sources.nix; in {
     package = pkgs.neovim-nightly;
 
     plugins = with pkgs; [
-      customVim.vim-cue
       customVim.vim-fish
       customVim.vim-fugitive
       customVim.vim-misc
-      customVim.vim-pgsql
-      customVim.vim-tla
       customVim.vim-zig
       customVim.pigeon
       customVim.AfterColors
