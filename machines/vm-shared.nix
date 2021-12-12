@@ -99,10 +99,10 @@
     # my big monitor it doesn't detect the resolution either so we just
     # manualy create the resolution and switch to it with this script.
     # This script could be better but its hopefully temporary so just force it.
-    (writeShellScriptBin "xrandr-6k" ''
-      xrandr --newmode "6016x3384_60.00"  1768.50  6016 6544 7216 8416  3384 3387 3392 3503 -hsync +vsync
-      xrandr --addmode Virtual-1 6016x3384_60.00
-      xrandr -s 6016x3384_60.00
+    (writeShellScriptBin "xrandr-27" ''
+      xrandr --newmode "2560x1440_60.00"  311.83  2560 2744 3024 3488  1440 1441 1444 1490  -HSync +Vsync
+      xrandr --addmode Virtual-1 2560x1440_60.00
+      xrandr -s 2560x1440_60.00
     '')
     (writeShellScriptBin "xrandr-mbp" ''
       xrandr -s 2880x1800
