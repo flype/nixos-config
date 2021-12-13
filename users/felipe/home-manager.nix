@@ -24,6 +24,7 @@ let sources = import ../../nix/sources.nix; in {
     pkgs._1password
     pkgs.vscode
     pkgs.ripgrep
+    pkgs.cloudflared
   ];
 
   #---------------------------------------------------------------------
@@ -223,6 +224,17 @@ let sources = import ../../nix/sources.nix; in {
     ];
 
     extraConfig = (import ./vim-config.nix) { inherit sources; };
+  };
+
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+Host git.gitlab.flywire.io
+  ProxyCommand cloudflared access ssh --hostname %h
+
+Host git.gitlab.flywire.tech
+  ProxyCommand cloudflared access ssh --hostname %h
+    '';
   };
 
   services.gpg-agent = {
