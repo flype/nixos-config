@@ -21,6 +21,7 @@ let sources = import ../../nix/sources.nix; in {
     pkgs.tree
     pkgs.watch
     pkgs.zathura
+    pkgs.glow
     pkgs._1password
     pkgs.vscode
     pkgs.ripgrep
