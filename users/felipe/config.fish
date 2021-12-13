@@ -55,7 +55,9 @@ function fish_greeting; end
 funcsave fish_greeting
 
 # do not show right prompt
+set --universal --erase fish_right_prompt;
 function fish_right_prompt; end
+funcsave fish_right_prompt
 
 
 # bobthefish theme
