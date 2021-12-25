@@ -98,6 +98,7 @@ let sources = import ../../nix/sources.nix; in {
       # that I'm just going to keep it consistent.
       pbcopy = "xclip";
       pbpaste = "xclip -o";
+      md = "glow -p";
     };
 
     plugins = map (n: {
