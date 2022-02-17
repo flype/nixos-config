@@ -11,6 +11,12 @@ let sources = import ../../nix/sources.nix; in {
   # per-project flakes sourced with direnv and nix-shell, so this is
   # not a huge list.
   home.packages = [
+    pkgs.awscli2
+    pkgs.aws-okta
+    pkgs.docker-compose
+    pkgs.gem
+    pkgs.ruby
+
     pkgs.bat
     pkgs.firefox
     pkgs.fzf
